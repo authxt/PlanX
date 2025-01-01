@@ -20,13 +20,6 @@ Planx Web App is a powerful and flexible tool designed to manage tasks effective
 
 - **PWA**: Data is cached locally using modern web technologies, ensuring smooth functionality without an internet connection.
 
-## Getting Started
-
-1. Visit the [Planx Web App](#).
-2. Sign up or log in to start managing your tasks.
-3. Share tasks with collaborators as needed.
-4. Install the app on your device for added convenience.
-
 ## Tech Stack
 
 - **Frontend**: React, TypeScript, Tailwind CSS
