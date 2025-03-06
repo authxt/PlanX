@@ -144,6 +144,12 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
     setIsSampleReading(false);
   }, [user.settings.voiceVolume, user.settings.voice]);
 
+  const handleDialogClose = () => {
+    window.speechSynthesis.cancel();
+    setIsSampleReading(false);
+    onClose();
+  };
+
   const handleAppThemeChange = (event: SelectChangeEvent<unknown>) => {
     const selectedTheme = event.target.value as string;
     setUser((prevUser) => ({
@@ -260,7 +266,7 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
   return (
     <Dialog
       open={open}
-      onClose={onClose}
+      onClose={handleDialogClose}
       maxWidth="md"
       fullWidth
       fullScreen={isMobile}
@@ -278,7 +284,7 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
         icon={<SettingsRounded />}
         title="Settings"
         subTitle="Manage Your settings and preferences"
-        onClose={onClose}
+        onClose={handleDialogClose}
         removeDivider
       />
       <Divider sx={{ mb: 2 }} />
@@ -541,21 +547,16 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
               </div>
             </TabPanel>
             <TabPanel value={tabValue} index={4}>
-              <TabHeading>About Todo App</TabHeading>
+              <TabHeading>About PlanX</TabHeading>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                📝 A simple todo app project made using React.js and MUI with many features,
+                📝 A simple PlanX project made using React.js and MUI with many features,
                 including sharing tasks via link, theme customization and offline usage as a PWA.
               </Typography>
-              <img
-                src="https://raw.githubusercontent.com/maciekt07/TodoApp/main/screenshots/baner.png"
-                style={{ width: "100%", height: "auto" }}
-                alt="Todo App Screenshot"
-              />
               <Typography variant="caption" sx={{ display: "block", mt: 2 }}>
-                Created by <Link href="https://github.com/maciekt07">maciekt07</Link> <br />
+                Created by <Link href="https://github.com/thapasijan17">thapasijan17</Link> <br />
                 Explore the project on GitHub:{" "}
                 <Link
-                  href="https://github.com/maciekt07/TodoApp"
+                  href="https://github.com/thapasijan17/PlanX"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
