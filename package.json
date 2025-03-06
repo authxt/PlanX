@@ -6,10 +6,10 @@
   },
   "private": true,
   "type": "module",
-  "homepage": "https://planx.vercel.app/",
+  "homepage": "https://PlanX.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thapasijan17/PlanX.git"
+    "url": "git+https://github.com/thapasijan17/planx.git"
   },
   "license": "MIT",
   "scripts": {
