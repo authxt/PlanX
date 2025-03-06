@@ -83,7 +83,7 @@ export const TaskMenu = () => {
           <div>
             <b>All tasks done</b>
             <br />
-            <span>You've checked off all your plans. Well done!</span>
+            <span>You've checked off all your todos. Well done!</span>
           </div>,
           {
             icon: (

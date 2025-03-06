@@ -48,7 +48,7 @@ const Home = () => {
 
   useEffect(() => {
     setRandomGreeting(getRandomGreeting());
-    document.title = "PlanX ";
+    document.title = "PlanX";
 
     const interval = setInterval(() => {
       setRandomGreeting(getRandomGreeting());

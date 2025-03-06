@@ -14,7 +14,7 @@ const NotFound: React.FC<NotFoundProps> = ({ message }) => {
   const n = useNavigate();
 
   useEffect(() => {
-    document.title = "PlanX- Page Not Found";
+    document.title = "PlanX - Page Not Found";
   }, []);
 
   return (

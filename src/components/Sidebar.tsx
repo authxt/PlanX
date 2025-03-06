@@ -212,7 +212,7 @@ export const ProfileSidebar = () => {
         >
           <Logo src={logo} alt="logo" />
           <LogoText>
-            <span>PlanX</span> App
+            <span>Todo</span> App
             <span>.</span>
           </LogoText>
         </LogoContainer>
@@ -293,7 +293,7 @@ export const ProfileSidebar = () => {
           </StyledMenuItem>
         </MenuLink>
 
-        <MenuLink to="https://www.buymeacoffee.com/thapasijan171">
+        <MenuLink to="https://www.buymeacoffee.com/thapasijan17">
           <StyledMenuItem className="bmcMenu">
             <BmcIcon className="bmc-icon" src={theme.darkmode ? bmcLogoLight : bmcLogo} /> &nbsp;
             Buy me a coffee{" "}
@@ -391,7 +391,7 @@ export const ProfileSidebar = () => {
               style={{ textDecoration: "none", color: "inherit" }}
               href="https://github.com/thapasijan17"
             >
-              sijanthapa17
+              thapasijan17
             </a>
           </CreditsContainer>
           <CreditsContainer>

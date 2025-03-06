@@ -1,6 +1,6 @@
 # Planx Web App
 
-Planx Web App is a powerful and flexible tool designed to manage tasks effectively. It combines the functionality of a modern Todo app with collaboration and offline capabilities, ensuring you can stay organized anytime, anywhere.
+Planx Web App is a powerful and flexible tool designed to manage tasks effectively. It combines the functionality of a modern PlanX with collaboration and offline capabilities, ensuring you can stay organized anytime, anywhere.
 
 ## Features
 
