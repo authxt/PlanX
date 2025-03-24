@@ -47,7 +47,7 @@ import { useSystemTheme } from "../../hooks/useSystemTheme";
 import { ColorElement } from "../../styles";
 import { Themes } from "../../theme/createTheme";
 import type { DarkModeOptions } from "../../types/user";
-import { showToast, systemInfo } from "../../utils";
+import { getFontColor, showToast, systemInfo } from "../../utils";
 import CustomRadioGroup from "./CustomRadioGroup";
 import CustomSwitch from "./CustomSwitch";
 import {
@@ -437,6 +437,7 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
               <Button
                 variant="contained"
                 disabled={!("speechSynthesis" in window)}
+                sx={{ color: getFontColor(muiTheme.palette.primary.main), mt: "8px" }}
                 onClick={() => {
                   if (!("speechSynthesis" in window)) return;
                   window.speechSynthesis.cancel();
@@ -567,21 +568,21 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
               </div>
             </TabPanel>
             <TabPanel value={tabValue} index={4}>
-              <TabHeading>About PlanX</TabHeading>
+              <TabHeading>PlanX App</TabHeading>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                📝 A simple PlanX project made using React.js and MUI with many features,
+                📝 A simple planx project made using React.js and MUI with many features,
                 including sharing tasks via link, theme customization and offline usage as a PWA.
               </Typography>
               <img
-                src="https://raw.githubusercontent.com/thapasijan17/planx/main/screenshots/baner.png"
+                src="https://raw.githubusercontent.com/thapasijan17/PlanX/main/screenshots/baner.png"
                 style={{ width: "100%", height: "auto" }}
-                alt="PlanX Screenshot"
+                alt="Todo App Screenshot"
               />
               <Typography variant="caption" sx={{ display: "block", mt: 2 }}>
                 Created by <Link href="https://github.com/thapasijan17">thapasijan17</Link> <br />
                 Explore the project on GitHub:{" "}
                 <Link
-                  href="https://github.com/thapasijan17/planx"
+                  href="https://github.com/thapasijan17/PlanX"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
