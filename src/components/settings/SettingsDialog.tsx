@@ -568,15 +568,15 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
               </div>
             </TabPanel>
             <TabPanel value={tabValue} index={4}>
-              <TabHeading>PlanX App</TabHeading>
+              <TabHeading>About PlanX</TabHeading>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                📝 A simple planx project made using React.js and MUI with many features,
+                📝 A simple PlanX project made using React.js and MUI with many features,
                 including sharing tasks via link, theme customization and offline usage as a PWA.
               </Typography>
               <img
                 src="https://raw.githubusercontent.com/thapasijan17/PlanX/main/screenshots/baner.png"
                 style={{ width: "100%", height: "auto" }}
-                alt="Todo App Screenshot"
+                alt="PlanX Screenshot"
               />
               <Typography variant="caption" sx={{ display: "block", mt: 2 }}>
                 Created by <Link href="https://github.com/thapasijan17">thapasijan17</Link> <br />
