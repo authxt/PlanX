@@ -463,7 +463,7 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
                 {isSampleReading ? <StopCircleRounded /> : <RecordVoiceOverRounded />} &nbsp; Play
                 Sample
               </Button>
-
+              {/* FIXME: ‼ On macOS multiple voices share the same name across different languages, preventing proper selection. */}
               <SectionHeading>Voice Selection</SectionHeading>
               {filteredVoices.length !== 0 ? (
                 <StyledSelect
@@ -570,11 +570,11 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
             <TabPanel value={tabValue} index={4}>
               <TabHeading>About PlanX</TabHeading>
               <Typography variant="body1" sx={{ mb: 2 }}>
-                📝 A simple PlanX project made using React.js and MUI with many features,
+                📝 A simple PlanX app project made using React.js and MUI with many features,
                 including sharing tasks via link, theme customization and offline usage as a PWA.
               </Typography>
               <img
-                src="https://raw.githubusercontent.com/thapasijan17/PlanX/main/screenshots/baner.png"
+                src="https://raw.githubusercontent.com/thapasijan17/planx/main/screenshots/baner.png"
                 style={{ width: "100%", height: "auto" }}
                 alt="PlanX Screenshot"
               />
@@ -582,7 +582,7 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
                 Created by <Link href="https://github.com/thapasijan17">thapasijan17</Link> <br />
                 Explore the project on GitHub:{" "}
                 <Link
-                  href="https://github.com/thapasijan17/PlanX"
+                  href="https://github.com/thapasijan17/planx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
