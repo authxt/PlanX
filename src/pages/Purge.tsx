@@ -1,14 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { CustomDialogTitle, TopBar } from "../components";
-import {
-  DialogBtn,
-  ManagementButton,
-  ManagementButtonsContainer,
-  ManagementContainer,
-  ManagementHeader,
-  TaskManagementContainer,
-} from "../styles";
-import { UserContext } from "../contexts/UserContext";
+import { DeleteForeverRounded, DeleteSweepRounded, DoneAllRounded } from "@mui/icons-material";
 import {
   Checkbox,
   Dialog,
@@ -19,9 +9,19 @@ import {
   Typography,
 } from "@mui/material";
 import { Emoji } from "emoji-picker-react";
-import { Task, UUID } from "../types/user";
+import { useContext, useEffect, useState } from "react";
+import { CustomDialogTitle, TopBar } from "../components";
+import { UserContext } from "../contexts/UserContext";
 import { useStorageState } from "../hooks/useStorageState";
-import { DeleteForeverRounded, DeleteSweepRounded, DoneAllRounded } from "@mui/icons-material";
+import {
+  DialogBtn,
+  ManagementButton,
+  ManagementButtonsContainer,
+  ManagementContainer,
+  ManagementHeader,
+  TaskManagementContainer,
+} from "../styles";
+import { Task, UUID } from "../types/user";
 import { showToast } from "../utils";
 
 const Purge = () => {

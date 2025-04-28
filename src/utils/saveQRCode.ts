@@ -40,7 +40,7 @@ export const saveQRCode = (taskName: string) => {
     ctx.fillStyle = "black";
     ctx.fillText(taskName, centerX, bottomY);
     // Draw attribution text
-    const text2 = "PlanX by github.com/thapasijan17";
+    const text2 = " App by github.com/authxt";
     ctx.font = "14px Poppins";
     const text2Width = ctx.measureText(text2).width;
     const text2X = (canvasWidth - text2Width) / 2;

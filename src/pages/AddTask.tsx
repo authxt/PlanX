@@ -1,17 +1,17 @@
-import { Category, Task } from "../types/user";
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { AddTaskButton, Container, StyledInput } from "../styles";
+import { useTheme } from "@emotion/react";
 import { AddTaskRounded, CancelRounded } from "@mui/icons-material";
 import { IconButton, InputAdornment, Tooltip } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CategorySelect, ColorPicker, CustomEmojiPicker, TopBar } from "../components";
 import { DESCRIPTION_MAX_LENGTH, TASK_NAME_MAX_LENGTH } from "../constants";
-import { CategorySelect, ColorPicker, TopBar, CustomEmojiPicker } from "../components";
+import InputThemeProvider from "../contexts/InputThemeProvider";
 import { UserContext } from "../contexts/UserContext";
 import { useStorageState } from "../hooks/useStorageState";
-import { useTheme } from "@emotion/react";
-import { generateUUID, getFontColor, isDark, showToast } from "../utils";
+import { AddTaskButton, Container, StyledInput } from "../styles";
 import { ColorPalette } from "../theme/themeConfig";
-import InputThemeProvider from "../contexts/InputThemeProvider";
+import { Category, Task } from "../types/user";
+import { generateUUID, getFontColor, isDark, showToast } from "../utils";
 
 const AddTask = () => {
   const { user, setUser } = useContext(UserContext);

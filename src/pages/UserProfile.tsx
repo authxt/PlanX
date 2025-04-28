@@ -50,7 +50,7 @@ const UserProfile = () => {
   }, [profilePicture]);
 
   useEffect(() => {
-    document.title = `PlanX - User ${name ? `(${name})` : ""}`;
+    document.title = `Todo App - User ${name ? `(${name})` : ""}`;
   }, [name]);
 
   const handleSaveName = () => {

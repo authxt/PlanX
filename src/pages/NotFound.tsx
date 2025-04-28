@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import { ArrowBackIosNew } from "@mui/icons-material";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { PathName } from "../styles";
 import { ReactNode, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { TaskIcon } from "../components";
+import { PathName } from "../styles";
 
 interface NotFoundProps {
   message?: string | ReactNode;

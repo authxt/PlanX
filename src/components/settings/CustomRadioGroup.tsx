@@ -38,7 +38,7 @@ const CustomRadioGroup = <T extends string>({
 
 export default CustomRadioGroup;
 
-// TODO: make options full width
+// T: make options full width
 
 const StyledRadioGroup = styled(RadioGroup)`
   display: flex;
@@ -56,7 +56,7 @@ const StyledRadioGroup = styled(RadioGroup)`
   }
 `;
 
-const StyledLabelBox = styled(Box)<{ selected: boolean }>`
+const StyledLabelBox = styled(Box) <{ selected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,7 +78,7 @@ const StyledLabelBox = styled(Box)<{ selected: boolean }>`
 
   &:hover {
     background-color: ${({ theme, selected }) =>
-      selected ? theme.primary : "rgba(0, 0, 0, 0.08)"};
+    selected ? theme.primary : "rgba(0, 0, 0, 0.08)"};
   }
 
   &:focus-visible {

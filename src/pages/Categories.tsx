@@ -1,8 +1,3 @@
-import { Emoji } from "emoji-picker-react";
-import { lazy, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ColorPicker, CustomDialogTitle, CustomEmojiPicker, TopBar } from "../components";
-import type { Category, UUID } from "../types/user";
 import { useTheme } from "@emotion/react";
 import { Delete, DeleteRounded, Edit, SaveRounded } from "@mui/icons-material";
 import {
@@ -13,7 +8,12 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
+import { Emoji } from "emoji-picker-react";
+import { lazy, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ColorPicker, CustomDialogTitle, CustomEmojiPicker, TopBar } from "../components";
 import { CATEGORY_NAME_MAX_LENGTH } from "../constants";
+import InputThemeProvider from "../contexts/InputThemeProvider";
 import { UserContext } from "../contexts/UserContext";
 import { useStorageState } from "../hooks/useStorageState";
 import {
@@ -28,9 +28,9 @@ import {
   DialogBtn,
   EditNameInput,
 } from "../styles";
-import { generateUUID, getFontColor, showToast } from "../utils";
 import { ColorPalette } from "../theme/themeConfig";
-import InputThemeProvider from "../contexts/InputThemeProvider";
+import type { Category, UUID } from "../types/user";
+import { generateUUID, getFontColor, showToast } from "../utils";
 
 const NotFound = lazy(() => import("./NotFound"));
 

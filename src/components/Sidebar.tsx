@@ -222,7 +222,8 @@ export const ProfileSidebar = () => {
         >
           <Logo src={logo} alt="logo" />
           <LogoText>
-            <span>PlanX</span> 
+            <span>PlanX
+              <span>.</span>
           </LogoText>
         </LogoContainer>
 
@@ -269,7 +270,7 @@ export const ProfileSidebar = () => {
 
         <StyledDivider />
 
-        <MenuLink to="https://github.com/thapasijan17/PlanX">
+        <MenuLink to="https://github.com/authxt/planx">
           <StyledMenuItem translate="no">
             <GitHub /> &nbsp; Github{" "}
             {stars && (
@@ -285,7 +286,7 @@ export const ProfileSidebar = () => {
           </StyledMenuItem>
         </MenuLink>
 
-        <MenuLink to="https://github.com/thapasijan17/PlanX/issues/new">
+        <MenuLink to="https://github.com/authxt/planx/issues/new">
           <StyledMenuItem>
             <BugReportRounded /> &nbsp; Report Issue{" "}
             {Boolean(issuesCount || issuesCount === 0) && (
@@ -302,7 +303,7 @@ export const ProfileSidebar = () => {
           </StyledMenuItem>
         </MenuLink>
 
-        <MenuLink to="https://www.buymeacoffee.com/thapasijan17">
+        <MenuLink to="https://www.buymeacoffee.com/authxt">
           <StyledMenuItem className="bmcMenu">
             <BmcIcon className="bmc-icon" src={theme.darkmode ? bmcLogoLight : bmcLogo} /> &nbsp;
             Buy me a coffee{" "}
@@ -398,9 +399,9 @@ export const ProfileSidebar = () => {
             <span style={{ marginLeft: "6px", marginRight: "4px" }}>by</span>
             <a
               style={{ textDecoration: "none", color: "inherit" }}
-              href="https://github.com/thapasijan17"
+              href="https://github.com/authxt"
             >
-              thapasijan17
+              authxt
             </a>
           </CreditsContainer>
           <CreditsContainer>
@@ -650,7 +651,7 @@ const BmcIcon = styled.img`
 const ProfileOptionsBottom = styled.div`
   margin-top: auto;
   margin-bottom: ${window.matchMedia("(display-mode: standalone)").matches &&
-  /Mobi/.test(navigator.userAgent)
+    /Mobi/.test(navigator.userAgent)
     ? "38px"
     : "16px"};
   display: flex;

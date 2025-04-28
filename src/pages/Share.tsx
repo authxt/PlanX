@@ -1,4 +1,17 @@
+import {
+  AddTaskRounded,
+  DoNotDisturbAltRounded,
+  DoneRounded,
+  ErrorRounded,
+  LinkOff,
+  PushPinRounded,
+} from "@mui/icons-material";
 import { Alert, AlertTitle, Dialog, DialogActions, DialogContent, Tooltip } from "@mui/material";
+import { Emoji, EmojiStyle } from "emoji-picker-react";
+import LZString from "lz-string";
+import { JSX, useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { CategoryBadge, CustomDialogTitle } from "../components";
 import {
   DescriptionLink,
   EmojiContainer,
@@ -12,9 +25,9 @@ import {
   TaskName,
   TimeLeft,
 } from "../components/tasks/tasks.styled";
+import { URL_REGEX, USER_NAME_MAX_LENGTH } from "../constants";
+import { UserContext } from "../contexts/UserContext";
 import { DialogBtn } from "../styles";
-import { useLocation, useNavigate } from "react-router-dom";
-import { JSX, useContext, useEffect, useState } from "react";
 import type { Task } from "../types/user";
 import {
   calculateDateDifference,
@@ -25,20 +38,7 @@ import {
   showToast,
   systemInfo,
 } from "../utils";
-import { Emoji, EmojiStyle } from "emoji-picker-react";
-import { UserContext } from "../contexts/UserContext";
-import {
-  AddTaskRounded,
-  DoNotDisturbAltRounded,
-  DoneRounded,
-  ErrorRounded,
-  LinkOff,
-  PushPinRounded,
-} from "@mui/icons-material";
-import { URL_REGEX, USER_NAME_MAX_LENGTH } from "../constants";
-import { CategoryBadge, CustomDialogTitle } from "../components";
 import Home from "./Home";
-import LZString from "lz-string";
 //FIXME: make everything type-safe
 const SharePage = () => {
   const { user, setUser } = useContext(UserContext);

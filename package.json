@@ -1,15 +1,15 @@
 {
   "name": "planx",
   "author": {
-    "name": "Sijan Thapa",
-    "url": "https://github.com/thapasijan17"
+    "name": "Authxt",
+    "url": "https://github.com/authxt"
   },
   "private": true,
   "type": "module",
   "homepage": "https://planx.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thapasijan17/planx.git"
+    "url": "git+https://github.com/authxt/planx.git"
   },
   "license": "MIT",
   "scripts": {

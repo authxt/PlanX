@@ -9,7 +9,7 @@ const manifest: Partial<ManifestOptions> = {
   theme_color: "#7764E8",
   background_color: "#171D34",
   description:
-    "PlanX with many features, including sharing tasks via link, theme customization and offline usage as a PWA. Made by github.com/thapasijan17",
+    "PlanX with many features, including sharing tasks via link, theme customization and offline usage as a PWA. Made by github.com/authxt",
   categories: ["productivity", "utilities", "lifestyle"],
   edge_side_panel: {
     preferred_width: 500,
