@@ -1,7 +1,13 @@
-import { useContext, useState } from "react";
-import type { Task, UUID } from "../../types/user";
-import { UserContext } from "../../contexts/UserContext";
-import { saveQRCode, showToast, systemInfo, getFontColor } from "../../utils";
+import styled from "@emotion/styled";
+import {
+  Apple,
+  CalendarTodayRounded,
+  ContentCopyRounded,
+  DownloadRounded,
+  IosShare,
+  LinkRounded,
+  QrCode2Rounded,
+} from "@mui/icons-material";
 import {
   Alert,
   AlertTitle,
@@ -18,20 +24,16 @@ import {
   Tabs,
   TextField,
 } from "@mui/material";
-import { CustomDialogTitle } from "../DialogTitle";
-import {
-  ContentCopyRounded,
-  DownloadRounded,
-  IosShare,
-  LinkRounded,
-  QrCode2Rounded,
-} from "@mui/icons-material";
 import { Emoji, EmojiStyle } from "emoji-picker-react";
-import { DialogBtn } from "../../styles";
-import styled from "@emotion/styled";
-import QRCode from "react-qr-code";
 import LZString from "lz-string";
+import { useContext, useState } from "react";
+import QRCode from "react-qr-code";
 import { TabGroupProvider, TabPanel } from "..";
+import { UserContext } from "../../contexts/UserContext";
+import { DialogBtn } from "../../styles";
+import type { Task, UUID } from "../../types/user";
+import { getFontColor, isAppleDevice, saveQRCode, showToast, systemInfo } from "../../utils";
+import { CustomDialogTitle } from "../DialogTitle";
 
 interface ShareDialogProps {
   open: boolean;
@@ -45,6 +47,12 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
   const { tasks, settings, name, emojisStyle } = user;
 
   const [shareTabVal, setShareTabVal] = useState<number>(0);
+
+  const tabs: { label: string; icon: React.ReactElement; disabled?: boolean }[] = [
+    { label: "Link", icon: <LinkRounded /> },
+    { label: "QR Code", icon: <QrCode2Rounded /> },
+    ...(isAppleDevice ? [{ label: "Calendar", icon: <CalendarTodayRounded /> }] : []),
+  ];
 
   const generateShareableLink = (taskId: UUID | null, userName: string): string => {
     const task = tasks.find((task) => task.id === taskId);
@@ -97,15 +105,58 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
     }
   };
 
+  const formatICSDate = (date: Date) => date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+
+  const handleAddToAppleCalendar = () => {
+    if (!selectedTask) return;
+
+    const deadline = formatICSDate(
+      selectedTask.deadline ? new Date(selectedTask.deadline) : new Date(),
+    );
+
+    let { description = "" } = selectedTask;
+    const urlMatch = description.match(/(https?:\/\/[^\s]+)/);
+    const eventUrl = urlMatch?.[0] || ""; // extract the first url from description
+    description = description.replace(urlMatch?.[0] || "", "").trim();
+
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "BEGIN:VEVENT",
+      `SUMMARY:${selectedTask.name}`,
+      `DESCRIPTION:${description}`,
+      `DTSTART:${deadline}`,
+      `DTEND:${deadline}`,
+      eventUrl ? `URL:${eventUrl}` : "",
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ]
+      .filter(Boolean) // remove empty lines
+      .join("\n");
+
+    const blob = new Blob([icsContent], { type: "text/calendar" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "event.ics";
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <Dialog
       open={open}
       onClose={onClose}
-      PaperProps={{
-        style: {
-          borderRadius: "28px",
-          padding: "10px",
-          width: "560px",
+      slotProps={{
+        paper: {
+          style: {
+            borderRadius: "28px",
+            padding: "10px",
+            width: "560px",
+          },
         },
       }}
     >
@@ -143,8 +194,15 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
           onChange={(_event, newValue) => setShareTabVal(newValue)}
           sx={{ m: "8px 0" }}
         >
-          <StyledTab label="Link" icon={<LinkRounded />} />
-          <StyledTab label="QR Code" icon={<QrCode2Rounded />} />
+          {tabs.map((tab) => (
+            <StyledTab
+              key={tab.label}
+              label={tab.label}
+              icon={tab.icon}
+              disabled={tab.disabled}
+              totaltabs={tabs.length}
+            />
+          ))}
         </Tabs>
         <TabGroupProvider name="share">
           <TabPanel value={shareTabVal} index={0}>
@@ -153,23 +211,25 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
               fullWidth
               variant="outlined"
               label="Shareable Link"
-              InputProps={{
-                readOnly: true,
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <LinkRounded sx={{ ml: "8px" }} />
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Button
-                      onClick={handleCopyToClipboard}
-                      sx={{ p: "12px", borderRadius: "14px", mr: "4px" }}
-                    >
-                      <ContentCopyRounded /> &nbsp; Copy
-                    </Button>
-                  </InputAdornment>
-                ),
+              slotProps={{
+                input: {
+                  readOnly: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LinkRounded sx={{ ml: "8px" }} />
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Button
+                        onClick={handleCopyToClipboard}
+                        sx={{ p: "12px", borderRadius: "14px", mr: "4px" }}
+                      >
+                        <ContentCopyRounded /> &nbsp; Copy
+                      </Button>
+                    </InputAdornment>
+                  ),
+                },
               }}
             />
           </TabPanel>
@@ -196,11 +256,30 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
               </DownloadQrCodeBtn>
             </Box>
           </TabPanel>
+          {isAppleDevice && (
+            <TabPanel value={shareTabVal} index={2}>
+              <Box
+                sx={{
+                  mt: "22px",
+                  display: "flex",
+                  justigyContent: "center",
+                  flexDirection: "column",
+                  gap: 1,
+                }}
+              >
+                <Button variant="contained" color="inherit" onClick={handleAddToAppleCalendar}>
+                  <Apple /> &nbsp; Add to Apple Calendar
+                </Button>
+              </Box>
+            </TabPanel>
+          )}
         </TabGroupProvider>
-        <Alert severity="info" sx={{ mt: "20px" }}>
-          <AlertTitle>Share Your Task</AlertTitle>
-          Copy the link to share manually or use the share button to send it via other apps.
-        </Alert>
+        {shareTabVal !== 2 && (
+          <Alert severity="info" sx={{ mt: "20px" }}>
+            <AlertTitle>Share Your Task</AlertTitle>
+            Copy the link to share manually or use the share button to send it via other apps.
+          </Alert>
+        )}
       </DialogContent>
       <DialogActions>
         <DialogBtn onClick={onClose}>Close</DialogBtn>
@@ -212,7 +291,7 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
   );
 };
 
-const ShareTaskChip = styled(Chip)<{ clr: string }>`
+const ShareTaskChip = styled(Chip) <{ clr: string }>`
   background: ${({ clr }) => clr};
   color: ${({ clr }) => getFontColor(clr)};
   font-size: 14px;
@@ -244,9 +323,10 @@ const QRCodeContainer = styled.div`
 
 const UnstyledTab = ({ ...props }: TabProps) => <Tab iconPosition="start" {...props} />;
 
-const StyledTab = styled(UnstyledTab)`
+const StyledTab = styled(UnstyledTab) <{ totaltabs: number }>`
   border-radius: 12px 12px 0 0;
-  width: 50%;
+  flex: 1 1 calc(100% / ${(props) => props.totaltabs});
+  max-width: calc(100% / ${(props) => props.totaltabs});
 `;
 
 const ShareField = styled(TextField)`
