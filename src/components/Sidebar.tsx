@@ -222,8 +222,7 @@ export const ProfileSidebar = () => {
         >
           <Logo src={logo} alt="logo" />
           <LogoText>
-            <span>PlanX
-              <span>.</span>
+            <span>PlanX </span>
           </LogoText>
         </LogoContainer>
 
