@@ -1,3 +1,14 @@
+import styled from "@emotion/styled";
+import {
+  AddAPhotoRounded,
+  Delete,
+  LinkRounded,
+  Logout,
+  SaveRounded,
+  Settings,
+  TodayRounded,
+  UploadRounded,
+} from "@mui/icons-material";
 import {
   Avatar,
   Badge,
@@ -12,23 +23,12 @@ import {
   Tooltip,
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import {
-  AddAPhotoRounded,
-  Delete,
-  LinkRounded,
-  Logout,
-  SaveRounded,
-  Settings,
-  TodayRounded,
-  UploadRounded,
-} from "@mui/icons-material";
-import { PROFILE_PICTURE_MAX_LENGTH, USER_NAME_MAX_LENGTH } from "../constants";
 import { CustomDialogTitle, LogoutDialog, SettingsDialog, TopBar } from "../components";
-import { DialogBtn, UserAvatar } from "../styles";
+import { PROFILE_PICTURE_MAX_LENGTH, USER_NAME_MAX_LENGTH } from "../constants";
 import { UserContext } from "../contexts/UserContext";
-import { timeAgo, getFontColor, showToast, getProfilePicture, generateUUID } from "../utils";
+import { DialogBtn, UserAvatar } from "../styles";
 import { ColorPalette } from "../theme/themeConfig";
+import { generateUUID, getFontColor, getProfilePicture, showToast, timeAgo } from "../utils";
 
 const UserProfile = () => {
   const { user, setUser } = useContext(UserContext);
@@ -50,7 +50,7 @@ const UserProfile = () => {
   }, [profilePicture]);
 
   useEffect(() => {
-    document.title = `Todo App - User ${name ? `(${name})` : ""}`;
+    document.title = `PlanX - User ${name ? `(${name})` : ""}`;
   }, [name]);
 
   const handleSaveName = () => {
@@ -309,12 +309,14 @@ const UserProfile = () => {
             }
             autoComplete="url"
             type="url"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LinkRounded />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LinkRounded />
+                  </InputAdornment>
+                ),
+              },
             }}
           />
 

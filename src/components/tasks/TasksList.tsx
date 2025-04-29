@@ -298,30 +298,34 @@ export const TasksList: React.FC = () => {
             onChange={(e) => {
               setSearch(e.target.value);
             }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search sx={{ color: "white" }} />
-                </InputAdornment>
-              ),
-              endAdornment: search ? (
-                <InputAdornment position="end">
-                  <SearchClear
-                    color={orderedTasks.length === 0 && user.tasks.length > 0 ? "error" : "default"}
-                    onClick={() => setSearch("")}
-                  >
-                    <Close
-                      sx={{
-                        color:
-                          orderedTasks.length === 0 && user.tasks.length > 0
-                            ? `${ColorPalette.red} !important`
-                            : "white",
-                        transition: ".3s all",
-                      }}
-                    />
-                  </SearchClear>
-                </InputAdornment>
-              ) : undefined,
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search sx={{ color: "white" }} />
+                  </InputAdornment>
+                ),
+                endAdornment: search ? (
+                  <InputAdornment position="end">
+                    <SearchClear
+                      color={
+                        orderedTasks.length === 0 && user.tasks.length > 0 ? "error" : "default"
+                      }
+                      onClick={() => setSearch("")}
+                    >
+                      <Close
+                        sx={{
+                          color:
+                            orderedTasks.length === 0 && user.tasks.length > 0
+                              ? `${ColorPalette.red} !important`
+                              : "white",
+                          transition: ".3s all",
+                        }}
+                      />
+                    </SearchClear>
+                  </InputAdornment>
+                ) : undefined,
+              },
             }}
           />
         )}
@@ -453,7 +457,7 @@ export const TasksList: React.FC = () => {
               {task.emoji || task.done ? (
                 <EmojiContainer
                   clr={getFontColor(task.color)}
-                  // onDoubleClick={() => handleSelectTask(task.id)}
+                // onDoubleClick={() => handleSelectTask(task.id)}
                 >
                   {task.done ? (
                     <DoneRounded fontSize="large" />

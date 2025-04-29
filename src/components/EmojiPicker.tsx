@@ -30,14 +30,14 @@ import {
   useEffect,
   useState,
 } from "react";
+import { CATEGORY_NAME_MAX_LENGTH, TASK_NAME_MAX_LENGTH } from "../constants";
 import { UserContext } from "../contexts/UserContext";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
 import { DialogBtn, fadeIn } from "../styles";
 import { ColorPalette } from "../theme/themeConfig";
-import { getFontColor, showToast, systemInfo } from "../utils";
-import { CATEGORY_NAME_MAX_LENGTH, TASK_NAME_MAX_LENGTH } from "../constants";
-import { CustomDialogTitle } from "./DialogTitle";
 import { AILanguageModel } from "../types/ai";
+import { getFontColor, showToast, systemInfo } from "../utils";
+import { CustomDialogTitle } from "./DialogTitle";
 
 const EmojiPicker = lazy(() => import("emoji-picker-react"));
 interface EmojiPickerProps {
@@ -335,11 +335,13 @@ export const CustomEmojiPicker = ({ emoji, setEmoji, color, name, type }: EmojiP
           <Dialog
             open={showEmojiPicker}
             onClose={toggleEmojiPicker}
-            PaperProps={{
-              style: {
-                padding: "12px",
-                borderRadius: "24px",
-                minWidth: "400px",
+            slotProps={{
+              paper: {
+                style: {
+                  padding: "12px",
+                  borderRadius: "24px",
+                  minWidth: "400px",
+                },
               },
             }}
           >
@@ -444,7 +446,7 @@ const SimplePickerContainer = styled.div`
   padding: 0;
 `;
 
-const EmojiAvatar = styled(Avatar)<{ clr: string | undefined }>`
+const EmojiAvatar = styled(Avatar) <{ clr: string | undefined }>`
   background: ${({ clr, theme }) => clr || theme.primary};
   transition: 0.3s all;
   cursor: pointer;
