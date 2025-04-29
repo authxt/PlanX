@@ -42,7 +42,6 @@ import {
 import { Emoji, EmojiStyle } from "emoji-picker-react";
 import { useContext, useEffect, useState } from "react";
 import { CustomDialogTitle, TabGroupProvider, TabPanel } from "..";
-import baner from "../../assets/baner.png";
 import { defaultUser } from "../../constants/defaultUser";
 import { UserContext } from "../../contexts/UserContext";
 import { useOnlineStatus } from "../../hooks/useOnlineStatus";
@@ -655,11 +654,6 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
                 📝 A simple PlanX project made using React.js and MUI with many features,
                 including sharing tasks via link, theme customization and offline usage as a PWA.
               </Typography>
-              <img
-                src={baner}
-                style={{ width: "100%", height: "auto" }}
-                alt="PlanX Screenshot"
-              />
               <Typography variant="caption" sx={{ display: "block", mt: 2 }}>
                 Created by <Link href="https://github.com/authxt">Auth</Link> <br />
                 Explore the project on GitHub:{" "}
