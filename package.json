@@ -1,7 +1,7 @@
 {
   "name": "planx",
   "author": {
-    "name": "Authxt",
+    "name": "Sijan Thapa",
     "url": "https://github.com/authxt"
   },
   "private": true,
@@ -21,7 +21,8 @@
     "prettier": "prettier --write \"**/*.{ts,tsx,md,json,html}\"",
     "format": "npm run lint:fix && npm run prettier",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:host": "vite preview --host"
   },
   "overrides": {
     "react-spring-bottom-sheet": {

@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { qrcode } from "vite-plugin-qrcode";
 import manifest from "./manifest";
@@ -9,6 +9,9 @@ import manifest from "./manifest";
 export default defineConfig({
   test: {
     globals: true,
+  },
+  optimizeDeps: {
+    exclude: ["@vite-pwa/assets-generator"],
   },
   plugins: [
     react(),

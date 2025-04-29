@@ -1,17 +1,17 @@
 import styled from "@emotion/styled";
+import { Info } from "@mui/icons-material";
 import { Box, Button, ButtonProps } from "@mui/material";
 import { getFontColor } from "../utils";
-import { Info } from "@mui/icons-material";
 
 //TODO: design this better
-export const TaskManagementContainer = styled(Box)<{ backgroundClr: string; selected: boolean }>`
+export const TaskManagementContainer = styled(Box) <{ backgroundClr: string; selected: boolean }>`
   display: flex;
   align-items: center;
   justify-content: left;
   margin: 8px;
   padding: 10px 4px;
   border-radius: 16px;
-  background: ${({ theme }) => getFontColor(theme.secondary)}15;
+  background: ${({ theme }) => (theme.darkmode ? "#00000030" : "#ffffff30")};
   border: 2px solid ${({ backgroundClr }) => backgroundClr};
   box-shadow: ${({ selected, backgroundClr }) => selected && `0 0 8px 1px ${backgroundClr}`};
   transition: 0.3s all;
