@@ -2,7 +2,7 @@ import type { ManifestOptions } from "vite-plugin-pwa";
 
 const manifest: Partial<ManifestOptions> = {
   name: "PlanX",
-  short_name: "PlanX",
+  short_name: "planx",
   display: "standalone",
   scope: "/",
   start_url: "/",

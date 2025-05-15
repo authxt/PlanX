@@ -1,14 +1,3 @@
-import styled from "@emotion/styled";
-import {
-  AddAPhotoRounded,
-  Delete,
-  LinkRounded,
-  Logout,
-  SaveRounded,
-  Settings,
-  TodayRounded,
-  UploadRounded,
-} from "@mui/icons-material";
 import {
   Avatar,
   Badge,
@@ -23,12 +12,23 @@ import {
   Tooltip,
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { CustomDialogTitle, LogoutDialog, SettingsDialog, TopBar } from "../components";
+import styled from "@emotion/styled";
+import {
+  AddAPhotoRounded,
+  Delete,
+  LinkRounded,
+  Logout,
+  SaveRounded,
+  Settings,
+  TodayRounded,
+  UploadRounded,
+} from "@mui/icons-material";
 import { PROFILE_PICTURE_MAX_LENGTH, USER_NAME_MAX_LENGTH } from "../constants";
-import { UserContext } from "../contexts/UserContext";
+import { CustomDialogTitle, LogoutDialog, SettingsDialog, TopBar } from "../components";
 import { DialogBtn, UserAvatar } from "../styles";
+import { UserContext } from "../contexts/UserContext";
+import { timeAgo, getFontColor, showToast, getProfilePicture, generateUUID } from "../utils";
 import { ColorPalette } from "../theme/themeConfig";
-import { generateUUID, getFontColor, getProfilePicture, showToast, timeAgo } from "../utils";
 
 const UserProfile = () => {
   const { user, setUser } = useContext(UserContext);

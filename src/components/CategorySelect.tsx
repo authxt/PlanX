@@ -12,11 +12,11 @@ import {
   Divider,
   FormControl,
   FormLabel,
-  ListSubheader,
   MenuItem,
   Select,
   SelectChangeEvent,
   useTheme,
+  ListSubheader,
 } from "@mui/material";
 import { Emoji } from "emoji-picker-react";
 import { CSSProperties, useContext, useState } from "react";
@@ -24,11 +24,11 @@ import { Link } from "react-router-dom";
 import { CategoryBadge } from ".";
 import { MAX_CATEGORIES_IN_TASK } from "../constants";
 import { UserContext } from "../contexts/UserContext";
-import { useSystemTheme } from "../hooks/useSystemTheme";
-import { isDarkMode } from "../theme/createTheme";
-import { ColorPalette } from "../theme/themeConfig";
 import type { Category, UUID } from "../types/user";
 import { getFontColor, showToast } from "../utils";
+import { ColorPalette } from "../theme/themeConfig";
+import { useSystemTheme } from "../hooks/useSystemTheme";
+import { isDarkMode } from "../theme/createTheme";
 
 interface CategorySelectProps {
   selectedCategories: Category[];
@@ -243,7 +243,7 @@ export const CategorySelect: React.FC<CategorySelectProps> = ({
   );
 };
 
-const StyledSelect = styled(Select) <{ width?: CSSProperties["width"] }>`
+const StyledSelect = styled(Select)<{ width?: CSSProperties["width"] }>`
   margin: 12px 0;
   border-radius: 16px !important;
   transition: 0.3s all;
@@ -253,7 +253,7 @@ const StyledSelect = styled(Select) <{ width?: CSSProperties["width"] }>`
   z-index: 999;
   border: none !important;
 `;
-const CategoriesMenu = styled(MenuItem) <{ clr: string; disable?: boolean }>`
+const CategoriesMenu = styled(MenuItem)<{ clr: string; disable?: boolean }>`
   padding: 12px 16px;
   border-radius: 16px;
   margin: 8px;
@@ -333,8 +333,8 @@ const StyledListSubheader = styled(ListSubheader)`
   font-weight: 600;
   position: sticky;
   z-index: 1;
-  top: 54px;
-  line-height: 26px;
+  top: 52px;
+  line-height: 28px;
   display: flex;
   align-items: center;
 `;

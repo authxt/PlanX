@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { StarOutlineRounded, StarRounded } from "@mui/icons-material";
-import { Button, css, TextField } from "@mui/material";
 import { getFontColor } from "../utils";
 import { fadeIn, scale } from "./keyframes.styled";
+import { Button, css, TextField } from "@mui/material";
+import { StarOutlineRounded, StarRounded } from "@mui/icons-material";
 
 export const CategoriesContainer = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 // Main Home component
-import { lazy, Suspense, useContext, useEffect, useMemo } from "react";
+import { useContext, useMemo, lazy, Suspense, useEffect } from "react";
 import {
   AddButton,
   GreetingHeader,
@@ -13,15 +13,15 @@ import {
   TasksCountContainer,
 } from "../styles";
 
-import { AddRounded, TodayRounded, WifiOff } from "@mui/icons-material";
-import { Box, CircularProgress, Tooltip, Typography } from "@mui/material";
 import { Emoji } from "emoji-picker-react";
-import { useNavigate } from "react-router-dom";
-import { AnimatedGreeting } from "../components/AnimatedGreeting";
-import { TaskProvider } from "../contexts/TaskProvider";
-import { UserContext } from "../contexts/UserContext";
+import { Box, CircularProgress, Tooltip, Typography } from "@mui/material";
 import { useOnlineStatus } from "../hooks/useOnlineStatus";
+import { AddRounded, TodayRounded, WifiOff } from "@mui/icons-material";
+import { UserContext } from "../contexts/UserContext";
 import { useResponsiveDisplay } from "../hooks/useResponsiveDisplay";
+import { useNavigate } from "react-router-dom";
+import { TaskProvider } from "../contexts/TaskProvider";
+import { AnimatedGreeting } from "../components/AnimatedGreeting";
 
 const TasksList = lazy(() =>
   import("../components/tasks/TasksList").then((module) => ({ default: module.TasksList })),

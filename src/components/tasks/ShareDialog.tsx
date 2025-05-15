@@ -1,13 +1,7 @@
-import styled from "@emotion/styled";
-import {
-  Apple,
-  CalendarTodayRounded,
-  ContentCopyRounded,
-  DownloadRounded,
-  IosShare,
-  LinkRounded,
-  QrCode2Rounded,
-} from "@mui/icons-material";
+import { useContext, useState } from "react";
+import type { Task, UUID } from "../../types/user";
+import { UserContext } from "../../contexts/UserContext";
+import { saveQRCode, showToast, systemInfo, getFontColor, isAppleDevice } from "../../utils";
 import {
   Alert,
   AlertTitle,
@@ -24,16 +18,22 @@ import {
   Tabs,
   TextField,
 } from "@mui/material";
-import { Emoji, EmojiStyle } from "emoji-picker-react";
-import LZString from "lz-string";
-import { useContext, useState } from "react";
-import QRCode from "react-qr-code";
-import { TabGroupProvider, TabPanel } from "..";
-import { UserContext } from "../../contexts/UserContext";
-import { DialogBtn } from "../../styles";
-import type { Task, UUID } from "../../types/user";
-import { getFontColor, isAppleDevice, saveQRCode, showToast, systemInfo } from "../../utils";
 import { CustomDialogTitle } from "../DialogTitle";
+import {
+  Apple,
+  CalendarTodayRounded,
+  ContentCopyRounded,
+  DownloadRounded,
+  IosShare,
+  LinkRounded,
+  QrCode2Rounded,
+} from "@mui/icons-material";
+import { Emoji, EmojiStyle } from "emoji-picker-react";
+import { DialogBtn } from "../../styles";
+import styled from "@emotion/styled";
+import QRCode from "react-qr-code";
+import LZString from "lz-string";
+import { TabGroupProvider, TabPanel } from "..";
 
 interface ShareDialogProps {
   open: boolean;
@@ -291,7 +291,7 @@ export const ShareDialog = ({ open, onClose, selectedTaskId, selectedTask }: Sha
   );
 };
 
-const ShareTaskChip = styled(Chip) <{ clr: string }>`
+const ShareTaskChip = styled(Chip)<{ clr: string }>`
   background: ${({ clr }) => clr};
   color: ${({ clr }) => getFontColor(clr)};
   font-size: 14px;
@@ -323,7 +323,7 @@ const QRCodeContainer = styled.div`
 
 const UnstyledTab = ({ ...props }: TabProps) => <Tab iconPosition="start" {...props} />;
 
-const StyledTab = styled(UnstyledTab) <{ totaltabs: number }>`
+const StyledTab = styled(UnstyledTab)<{ totaltabs: number }>`
   border-radius: 12px 12px 0 0;
   flex: 1 1 calc(100% / ${(props) => props.totaltabs});
   max-width: calc(100% / ${(props) => props.totaltabs});

@@ -222,7 +222,8 @@ export const ProfileSidebar = () => {
         >
           <Logo src={logo} alt="logo" />
           <LogoText>
-            <span>PlanX </span>
+            <span>PlanX</span>
+            <span>.</span>
           </LogoText>
         </LogoContainer>
 
@@ -650,7 +651,7 @@ const BmcIcon = styled.img`
 const ProfileOptionsBottom = styled.div`
   margin-top: auto;
   margin-bottom: ${window.matchMedia("(display-mode: standalone)").matches &&
-    /Mobi/.test(navigator.userAgent)
+  /Mobi/.test(navigator.userAgent)
     ? "38px"
     : "16px"};
   display: flex;

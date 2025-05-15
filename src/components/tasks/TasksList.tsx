@@ -457,7 +457,7 @@ export const TasksList: React.FC = () => {
               {task.emoji || task.done ? (
                 <EmojiContainer
                   clr={getFontColor(task.color)}
-                // onDoubleClick={() => handleSelectTask(task.id)}
+                  // onDoubleClick={() => handleSelectTask(task.id)}
                 >
                   {task.done ? (
                     <DoneRounded fontSize="large" />

@@ -1,24 +1,26 @@
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import { TopBar } from "../components";
+import { Category, Task, UUID } from "../types/user";
+import Typography from "@mui/material/Typography";
+import { Emoji } from "emoji-picker-react";
 import {
   FileDownload,
   FileUpload,
   IntegrationInstructionsRounded,
   Link,
 } from "@mui/icons-material";
+import { exportTasksToJson, isHexColor, showToast, systemInfo } from "../utils";
 import { IconButton, Tooltip } from "@mui/material";
-import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
-import Typography from "@mui/material/Typography";
-import { Emoji } from "emoji-picker-react";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { TopBar } from "../components";
 import {
   CATEGORY_NAME_MAX_LENGTH,
   DESCRIPTION_MAX_LENGTH,
   TASK_NAME_MAX_LENGTH,
 } from "../constants";
 import { UserContext } from "../contexts/UserContext";
-import { useCtrlS } from "../hooks/useCtrlS";
 import { useStorageState } from "../hooks/useStorageState";
+import { useCtrlS } from "../hooks/useCtrlS";
 import {
   DropZone,
   InfoIcon,
@@ -29,8 +31,6 @@ import {
   ManagementHeader,
   TaskManagementContainer,
 } from "../styles";
-import { Category, Task, UUID } from "../types/user";
-import { exportTasksToJson, isHexColor, showToast, systemInfo } from "../utils";
 
 const Transfer = () => {
   const { user, setUser } = useContext(UserContext);
@@ -388,14 +388,14 @@ const Transfer = () => {
           title={
             selectedTasks.length > 0
               ? `Selected tasks: ${new Intl.ListFormat("en", {
-                style: "long",
-                type: "conjunction",
-              }).format(
-                selectedTasks.map((taskId) => {
-                  const selectedTask = user.tasks.find((task) => task.id === taskId);
-                  return selectedTask ? selectedTask.name : "";
-                }),
-              )}`
+                  style: "long",
+                  type: "conjunction",
+                }).format(
+                  selectedTasks.map((taskId) => {
+                    const selectedTask = user.tasks.find((task) => task.id === taskId);
+                    return selectedTask ? selectedTask.name : "";
+                  }),
+                )}`
               : undefined
           }
         >
