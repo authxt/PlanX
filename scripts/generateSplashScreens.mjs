@@ -350,7 +350,7 @@ const generateHTMLContent = ({ width, height, mode, orientation }) => {
       </head>
       <body>
         <div class="container">
-          <img src="https://raw.githubusercontent.com/maciekt07/TodoApp/refs/heads/main/public/logo512.png" class="logo" alt="App Logo" />
+          <img src="https://raw.githubusercontent.com/autxt/planx/refs/heads/main/public/logo512.png" class="logo" alt="App Logo" />
           <div class="app-name">
             <span class="todo">Todo</span>
             <span class="app">&nbsp;App</span>
@@ -360,8 +360,8 @@ const generateHTMLContent = ({ width, height, mode, orientation }) => {
         <div class="attribution">
           <div class="attribution-text">Made By</div>
           <div class="attribution-box">
-            <img src="https://avatars.githubusercontent.com/u/85953204?v=4" alt="@maciekt07" />
-            <span>@maciekt07</span>
+            <img src="https://avatars.githubusercontent.com/u/192339393?v=4" alt="@authxt" />
+            <span>@authxt</span>
           </div>
         </div>
       </body>
