@@ -664,7 +664,7 @@ export const SettingsDialog = ({ open, onClose }: SettingsProps) => {
                 Created by <Link href="https://github.com/authxt">authxt</Link> <br />
                 Explore the project on GitHub:{" "}
                 <Link
-                  href="https://github.com/authxt/PlanX"
+                  href="https://github.com/authxt/planx"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
