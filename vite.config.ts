@@ -11,6 +11,7 @@ export default defineConfig({
     globals: true,
   },
   optimizeDeps: {
+    include: ["workbox-window"],
     exclude: ["@vite-pwa/assets-generator"],
   },
   plugins: [
@@ -23,8 +24,11 @@ export default defineConfig({
         enabled: true,
         type: "module",
       },
+      injectRegister: 'auto',
       registerType: "prompt",
+      strategies: 'generateSW',
       workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,wasm}'],
         // Use runtime caching for dynamic imports
         runtimeCaching: [
           {
@@ -67,7 +71,7 @@ export default defineConfig({
           },
         ],
       },
-      includeAssets: ["**/*", "sw.js"],
+      includeAssets: ["**/*"],
     }),
   ],
 });

@@ -66,6 +66,7 @@
     "vite": "^6.2.2",
     "vite-plugin-pwa": "^0.21.1",
     "vite-plugin-qrcode": "^0.2.4",
-    "vitest": "^3.0.9"
+    "vitest": "^3.0.9",
+    "workbox-window": "^7.3.0"
   }
 }
